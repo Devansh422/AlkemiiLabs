@@ -166,7 +166,7 @@ img{
 }
 
 .toggle-btn {
-  position: absolute;
+  position: fixed;
   top: 2em;
   right: 2em;
   padding: 0.5rem 1rem;
