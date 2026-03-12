@@ -1,11 +1,290 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Awwwards CriticalDanger Scroll Animation Rebuild | Codegrid</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
 
-</body>
+
+.sticky {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--text);
+}
+
+.sticky-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform;
+}
+
+.sticky-header h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: 25vw;
+  font-weight: lighter;
+  letter-spacing: -0.05em;
+  line-height: 100%;
+  font-family: 'heading';
+  color: var(--base);
+}
+
+.card {
+  position: absolute;
+  top: 10%;
+  left: 100%;
+  width: 325px;
+  height: 500px;
+  background-color: var(--white);
+  border-radius: 1em;
+  padding: 0.5em;
+  will-change: transform;
+  z-index: 2;
+}
+
+.card .card-img {
+  width: 100%;
+  height: 200px;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.card .card-img::before {
+  content: "";
+  width: calc(100% - 1em);
+  height: 200px;
+  border-radius: 0.5em;
+  top:0.5em;
+  left:0.5em;
+  position: absolute;
+  background: rgba(199, 235, 6, 0.35); /* #C7EB06 tint */
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.card-content {
+  width: 100%;
+  height: 275px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  padding: 0.5rem 0;
+}
+
+.card-content h2 {
+  font-size: 42px;
+  font-weight: lighter;
+  letter-spacing: -0.005em;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  font-family: 'heading';
+  color: var(--text);
+  background: var(--base);
+}
+
+.card-content p {
+  font-size: 1rem;
+  font-weight: lighter;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  padding: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .nav-items {
+    justify-content: flex-end;
+  }
+}
+
+/* lenis smooth scroll */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+    </style>
+  </head>
+  <body>
+    <section class="sticky">
+      <div class="sticky-header">
+        <h1>Main character energy.</h1>
+      </div>
+
+      <div class="card">
+        <div class="card-img"><img src="./assets/img1.webp" alt="" /></div>
+        <div class="card-content">
+          <div class="card-title"><h2>Social Media Creators</h2></div>
+          <div class="card-description">
+            <p>
+              Replicate trending viral effects instantly. Keep your Reels and Shorts fresh without spending hours learning complex editing software.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><img src="./assets/img2.webp" alt="" /></div>
+        <div class="card-content">
+          <div class="card-title"><h2>Professional Editors</h2></div>
+          <div class="card-description">
+            <p>
+              Bypass tedious manual keyframing. Use our AI to quickly draft complex VFX, giving you more time to perfect the narrative.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><img src="./assets/img3.webp" alt="" /></div>
+        <div class="card-content">
+          <div class="card-title"><h2>Marketing Agencies</h2></div>
+          <div class="card-description">
+            <p>
+              Produce high-quality, visually stunning video ad creatives at scale. Lower your production costs without sacrificing professional-grade visual impact.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><img src="./assets/img4.webp" alt="" /></div>
+        <div class="card-content">
+          <div class="card-title"><h2>Indie Filmmakers</h2></div>
+          <div class="card-description">
+            <p>
+              Bring Hollywood-style visual effects to your independent projects on a budget. Elevate your storytelling with AI-powered, cinematic post-production tools.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img"><img src="./assets/img5.webp" alt="" /></div>
+        <div class="card-content">
+          <div class="card-title"><h2>Beginners & Enthusiasts</h2></div>
+          <div class="card-description">
+            <p>
+              Achieve cinematic, pro-level video effects effortlessly. Skip the steep learning curve of traditional software and start creating magic right away.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="outro"><p>(Your next section goes here)</p></section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.umd.js"></script>
+<script src="app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const stickySection = document.querySelector(".sticky");
+  const stickyHeader = document.querySelector(".sticky-header");
+  const cards = document.querySelectorAll(".card");
+  const stickyHeight = window.innerHeight * 5;
+
+  const transforms = [
+    [
+      [10, 50, -10, 10],
+      [20, -10, -45, 20],
+    ],
+    [
+      [0, 47.5, -10, 15],
+      [-25, 15, -45, 30],
+    ],
+    [
+      [0, 52.5, -10, 5],
+      [15, -5, -40, 60],
+    ],
+    [
+      [0, 50, 30, -80],
+      [20, -10, 60, 5],
+    ],
+    [
+      [0, 55, -15, 30],
+      [25, -15, 60, 95],
+    ],
+  ];
+
+  ScrollTrigger.create({
+    trigger: stickySection,
+    start: "top top",
+    end: `+=${stickyHeight}px`,
+    pin: true,
+    pinSpacing: true,
+    onUpdate: (self) => {
+      const progress = self.progress;
+
+      const maxTranslate = stickyHeader.offsetWidth - window.innerWidth;
+      const translateX = -progress * maxTranslate;
+      gsap.set(stickyHeader, { x: translateX });
+
+      cards.forEach((card, index) => {
+        const delay = index * 0.1125;
+        const cardProgress = Math.max(0, Math.min((progress - delay) * 2, 1));
+
+        if (cardProgress > 0) {
+          const cardStartX = 25;
+          const cardEndX = -650;
+          const yPos = transforms[index][0];
+          const rotations = transforms[index][1];
+
+          const cardX = gsap.utils.interpolate(
+            cardStartX,
+            cardEndX,
+            cardProgress
+          );
+
+          const yProgress = cardProgress * 3;
+          const yIndex = Math.min(Math.floor(yProgress), yPos.length - 2);
+          const yInterpolation = yProgress - yIndex;
+          const cardY = gsap.utils.interpolate(
+            yPos[yIndex],
+            yPos[yIndex + 1],
+            yInterpolation
+          );
+
+          const cardRotation = gsap.utils.interpolate(
+            rotations[yIndex],
+            rotations[yIndex + 1],
+            yInterpolation
+          );
+
+          gsap.set(card, {
+            xPercent: cardX,
+            yPercent: cardY,
+            rotation: cardRotation,
+            opacity: 1,
+          });
+        } else {
+          gsap.set(card, { opacity: 0 });
+        }
+      });
+    },
+  });
+});
+
+    </script>
+  </body>
 </html>

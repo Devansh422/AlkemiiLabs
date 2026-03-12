@@ -1,0 +1,190 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'heading';
+  src: url('heading.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'base';
+  src: url('base.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root{
+	--base:#C7EB06;
+	--white:#FDFBF7;
+	--text:#1C1917;
+
+
+
+	 --shiny-cta-bg: #1C1917;
+  --shiny-cta-bg-subtle: #1C1917;
+  --shiny-cta-fg: #FDFBF7;
+  --shiny-cta-highlight: #C7EB06;
+  --shiny-cta-highlight-subtle: #C7EB06;
+}
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--text);
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background: var(--text);
+  border-radius: 10px;
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: var(--base);
+  border-radius: 3px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--white);
+}
+
+body{
+	position: relative;
+	width: 100%;
+	height: fit-content;
+	overflow-x: hidden;
+	font-family: 'base';
+}
+
+img{
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+
+
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--text);
+  color: var(--white);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  z-index: 9990;
+}
+
+.count-wrapper {
+  position: relative;
+  width: 180px;
+  height: 360px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  will-change: transform;
+}
+
+.count {
+  font-family: 'heading';
+  position: relative;
+  width: 1080px;
+  height: 360px;
+  display: flex;
+  justify-content: space-between;
+  transform: translateX(-1080px);
+  will-change: transform;
+}
+
+.digit {
+  position: relative;
+  width: 180px;
+  height: 360px;
+}
+
+.digit h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  font-size: 280px;
+  font-weight: lighter;
+  line-height: 1;
+}
+
+.revealer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.site-info {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.125em;
+}
+
+.line {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  height: 18px;
+}
+
+.line p {
+  position: relative;
+  font-family: "PP Neue Montreal";
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.125px;
+  opacity: 0.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateY(18px);
+  will-change: transform;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--base);
+  border-radius: 1rem;
+  transform: scale(0);
+  z-index: 99999;
+}
+
+.logo{
+	position: fixed;
+	top:2rem;
+	left:2rem;
+	height: 3rem;
+	width: fixed;
+	z-index: 99999;
+	transform: scale(0);
+}

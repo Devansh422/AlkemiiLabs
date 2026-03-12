@@ -1,0 +1,115 @@
+.sticky {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--text);
+}
+
+.sticky-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250vw;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  will-change: transform;
+}
+
+.sticky-header h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: 25vw;
+  font-weight: lighter;
+  letter-spacing: -0.05em;
+  line-height: 100%;
+  font-family: 'heading';
+  color: var(--base);
+}
+
+.card {
+  position: absolute;
+  top: 10%;
+  left: 100%;
+  width: 325px;
+  height: 500px;
+  background-color: var(--white);
+  border-radius: 1em;
+  padding: 0.5em;
+  will-change: transform;
+  z-index: 2;
+}
+
+.card .card-img {
+  width: 100%;
+  height: 200px;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+
+.card .card-img::before {
+  content: "";
+  width: calc(100% - 1em);
+  height: 200px;
+  border-radius: 0.5em;
+  top:0.5em;
+  left:0.5em;
+  position: absolute;
+  background: rgba(199, 235, 6, 0.35); /* #C7EB06 tint */
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.card-content {
+  width: 100%;
+  height: 275px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  padding: 0.5rem 0;
+}
+
+.card-content h2 {
+  font-size: 42px;
+  font-weight: lighter;
+  letter-spacing: -0.005em;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  font-family: 'heading';
+  color: var(--text);
+  background: var(--base);
+}
+
+.card-content p {
+  font-size: 1rem;
+  font-weight: lighter;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  padding: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .nav-items {
+    justify-content: flex-end;
+  }
+}
+
+/* lenis smooth scroll */
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
