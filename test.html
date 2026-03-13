@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Old Way vs New Way Flow - Pro Scrub Animation</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <style>
+    /* CSS Reset & Base Variables */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Section Layout */
+    .comparison-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 4rem;
+      perspective: 1000px; /* Needed for 3D text flips */
+      background: var(--text);
+    }
+
+    /* Text Content */
+    .text-content {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .text-content h2 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--white), var(--base));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+      transform-style: preserve-3d;
+      font-family: 'heading';
+    }
+
+    .text-content p {
+      font-size: 1.125rem;
+      color: #a0a0a0;
+      line-height: 1.6;
+      font-family: 'base';
+    }
+
+    /* Flow Container Layout */
+    .flow-container {
+      flex: 1.5;
+      display: flex;
+      gap: 2rem;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .flow-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+      border-radius: 2rem;
+      background: #111;
+      border: 1px solid #222;
+      /* Smooth out GSAP transformations */
+      will-change: transform, opacity, filter; 
+    }
+
+    .flow-column h3 {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      font-family: 'heading';
+    }
+
+    /* Steps & Arrows Base */
+    .step {
+      padding: 1rem;
+      text-align: center;
+      border-radius: 1rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      /* Removed CSS opacity/transform so GSAP fromTo controls it entirely */
+    }
+
+    .arrow {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    /* Old Way Styling (Red/Muted) */
+    .old-way {
+      border-color: rgba(255, 60, 60, 0.1);
+    }
+    .old-way h3 { color: #888; }
+    .old-way .step {
+      background: #1a1515;
+      color: #888;
+      border: 1px solid #332222;
+    }
+    .old-way .arrow { color: #444; }
+    .old-way .step.error {
+      background: #3a1515;
+      color: #ff5555;
+      border-color: #ff5555;
+    }
+
+    /* New Way Styling (Bright/Gradient) */
+    .new-way {
+      background: var(--text);
+      border-color: var(--base);
+      box-shadow: 0 0 20px rgba(74, 0, 224, 0.05);
+    }
+    .new-way h3 {
+      background: linear-gradient(90deg, var(--white), var(--base));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .new-way .step {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--base);
+      color: #fff;
+    }
+    .new-way .step.magic {
+      background: linear-gradient(90deg, var(--base), var(--white));
+      color: var(--text);
+      border: none;
+      font-weight: 700;
+    }
+    .new-way .step.success {
+      border: 1px solid var(--base);
+      color: var(--white);
+    }
+    .new-way .arrow {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      color: var(--white);
+    }
+
+    /* VS Badge */
+    .vs-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #222;
+      color: var(--base);
+      padding: 0.75rem 1.25rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 900;
+      border: 2px solid var(--base);
+      z-index: 2;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .comparison-section {
+        flex-direction: column;
+        padding: 2rem 1rem;
+      }
+      .text-content {
+        max-width: 100%;
+        text-align: center;
+      }
+      .flow-container {
+        flex-direction: column;
+        width: 100%;
+      }
+      .vs-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+<section class="comparison-section">
+    <div class="text-content">
+      <h2 class="animate-title">The AI<br>Advantage</h2>
+      <p class="animate-desc">Stop wasting hours on tedious manual labor. See how our AI handles the heavy lifting, allowing you to bypass the technical headaches and focus purely on your creative vision.</p>
+    </div>
+
+    <div class="flow-container">
+      
+      <div class="flow-column old-way">
+        <h3>The Old Way</h3>
+        <div class="step old-step">Find inspiration</div>
+        <div class="arrow old-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step old-step">Watch 3 tutorials</div>
+        <div class="arrow old-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step old-step">Buy plugin</div>
+        <div class="arrow old-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step old-step">Keyframe manually</div>
+        <div class="arrow old-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step old-step error">Render crash</div>
+      </div>
+      
+      <div class="vs-badge">VS</div>
+
+      <div class="flow-column new-way">
+        <h3>The New Way</h3>
+        <div class="step new-step">Upload Reference</div>
+        <div class="arrow new-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step new-step magic">AI Magic</div>
+        <div class="arrow new-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step new-step success">Export Masterpiece</div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Increased scroll distance (+=200%) to give the cool effects room to breathe
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".comparison-section",
+        start: "top top",
+        end: "+=200%", 
+        scrub: 1,
+        pin: true,
+      }
+    });
+
+    // 1. Text Entry: 3D flip-up for the title, slide up for description
+    tl.fromTo(".animate-title", 
+      { opacity: 0, y: 50, rotationX: -60 }, 
+      { opacity: 1, y: 0, rotationX: 0, duration: 1, ease: "none" }
+    ).fromTo(".animate-desc", 
+      { opacity: 0, y: 30 }, 
+      { opacity: 1, y: 0, duration: 1, ease: "none" }, 
+      "-=0.5" 
+    );
+
+    // 2. Old Way Container slides in from the left
+    tl.fromTo(".old-way", 
+      { opacity: 0, x: -50 }, 
+      { opacity: 1, x: 0, duration: 1, ease: "none" },
+      "-=0.5"
+    );
+
+    // 3. Old Way Steps drop in heavily
+    const oldItems = gsap.utils.toArray('.old-way .step, .old-way .arrow');
+    tl.fromTo(oldItems, {
+      opacity: 0,
+      y: -20,
+      scale: 0.95
+    }, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.5,
+      stagger: 0.4, 
+      ease: "none"
+    });
+
+    // 4. The Crash & The "Death" of the old way
+    // Violent shake on the error step
+    tl.to(".step.error", { x: -10, rotation: -2, duration: 0.1, ease: "none" })
+      .to(".step.error", { x: 10, rotation: 2, duration: 0.1, ease: "none" })
+      .to(".step.error", { x: -10, rotation: -2, duration: 0.1, ease: "none" })
+      .to(".step.error", { x: 0, rotation: 0, duration: 0.1, ease: "none" })
+      // The old column dims, turns gray, and shrinks into the background
+      .to(".old-way", { 
+        opacity: 0.3, 
+        filter: "grayscale(100%)", 
+        scale: 0.95, 
+        duration: 1, 
+        ease: "none" 
+      }, "+=0.2");
+
+    // 5. VS Badge dramatic spin-in
+    tl.fromTo(".vs-badge",
+      { opacity: 0, scale: 0, rotation: -180 },
+      { opacity: 1, scale: 1.2, rotation: 0, duration: 0.8, ease: "none" }
+    ).to(".vs-badge", { scale: 1, duration: 0.2, ease: "none" });
+
+    // 6. New Way Container slides in from the right
+    tl.fromTo(".new-way", 
+      { opacity: 0, x: 50 }, 
+      { opacity: 1, x: 0, duration: 1, ease: "none" },
+      "-=0.5"
+    );
+
+    // 7. New Way Steps pop in quickly
+    const newItems = gsap.utils.toArray('.new-way .step, .new-way .arrow');
+    tl.fromTo(newItems, {
+      opacity: 0,
+      y: 20,
+      scale: 0.8
+    }, {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.5,
+      stagger: 0.3,
+      ease: "none"
+    });
+
+    // 8. The Glow Up: Make the AI elements pop and glow
+    tl.to(".new-way .magic", { 
+      scale: 1.05, 
+      boxShadow: "0 0 30px var(--base)", 
+      duration: 0.8,
+      ease: "none"
+    }).to(".new-way .success", { 
+      scale: 1.05, 
+      boxShadow: "0 0 20px var(--base)", 
+      borderColor: "var(--base)",  
+      duration: 0.8,
+      ease: "none"
+    }, "<"); // The "<" syncs this animation with the previous one
+
+    // 9. Final Heroic State: The New Way container scales up to dominate the view
+    tl.to(".new-way", { 
+      scale: 1.05, 
+      boxShadow: "0 0 60px rgba(199, 235, 6, 0.1)", 
+      borderColor: "var(--base)",
+      duration: 1,
+      ease: "none"
+    });
+
+  </script>
+</body>
+</html>

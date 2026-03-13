@@ -3,36 +3,25 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="hero.css">
     <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="comparison.css">
     <link rel="stylesheet" href="https://use.typekit.net/xjn2bjt.css" />
 	<title></title>
 </head>
 <body>
 
 	<div class="loader">
-      <div class="count-wrapper">
-        <div class="count">
-          <div class="digit"><h1 style="color: var(--base);">9</h1></div>
-          <div class="digit"><h1 style="color: var(--base);">8</h1></div>
-          <div class="digit"><h1 style="color: var(--base);">7</h1></div>
-          <div class="digit"><h1 style="color: var(--base);">4</h1></div>
-          <div class="digit"><h1 style="color: var(--base);">2</h1></div>
-          <div class="digit"><h1 style="color: var(--base);">0</h1></div>
-        </div>
-      </div>
-
-      <div class="count-wrapper">
-        <div class="count">
-          <div class="digit"><h1>9</h1></div>
-          <div class="digit"><h1>5</h1></div>
-          <div class="digit"><h1>9</h1></div>
-          <div class="digit"><h1>7</h1></div>
-          <div class="digit"><h1>4</h1></div>
-          <div class="digit"><h1>0</h1></div>
-        </div>
-      </div>
+      <div class="loader-text">00</div>
 
       <div class="revealer revealer-1">
         <svg
@@ -85,6 +74,13 @@
     </div>
       <div class="toggle-btn">
         <span style="color: var(--text);">Menu</span>
+      </div>
+
+      <div class="menu-panel" id="site-menu" aria-hidden="true">
+        <a class="menu-item" href="#">Home</a>
+        <a class="menu-item" href="#">How it works</a>
+        <a class="menu-item" href="#">Features</a>
+        <a class="menu-item" href="#">Pricing</a>
       </div>
 
 
@@ -162,6 +158,46 @@
     </section>
 
 
+
+
+<section class="comparison-section">
+    <div class="text-content">
+      <h2 class="animate-title">The AI<br>Advantage</h2>
+      <p class="animate-desc">Stop wasting hours on tedious manual labor. See how our AI handles the heavy lifting, allowing you to bypass the technical headaches and focus purely on your creative vision.</p>
+    </div>
+
+    <div class="flow-container">
+      
+      <div class="flow-column old-way">
+        <h3>The Old Way</h3>
+        <div class="step old-step">Find inspiration</div>
+        <div class="arrow old-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step old-step">Watch 3 tutorials</div>
+        <div class="arrow old-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step old-step">Buy plugin</div>
+        <div class="arrow old-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step old-step">Keyframe manually</div>
+        <div class="arrow old-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step old-step error">Render crash</div>
+      </div>
+      
+      <div class="vs-badge">VS</div>
+
+      <div class="flow-column new-way">
+        <h3>The New Way</h3>
+        <div class="step new-step">Upload Reference</div>
+        <div class="arrow new-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step new-step magic">AI Magic</div>
+        <div class="arrow new-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></div>
+        <div class="step new-step success">Export Masterpiece</div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -169,5 +205,6 @@
 <script src="app.js"></script>
 <script src="preloader.js"></script>
 <script src="about.js"></script>
-<script type="module" src="../hero.js"></script>
+<script src="comparison.js"></script>
+<script type="module" src="hero.js"></script>
 </html>

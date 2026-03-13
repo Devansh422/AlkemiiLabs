@@ -63,6 +63,7 @@ body{
 	height: fit-content;
 	overflow-x: hidden;
 	font-family: 'base';
+  background: var(--text);
 }
 
 img{
@@ -87,43 +88,16 @@ img{
   overflow: hidden;
   z-index: 9990;
 }
-
-.count-wrapper {
-  position: relative;
-  width: 180px;
-  height: 360px;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  will-change: transform;
-}
-
-.count {
+.loader-text{
+  background: #000;
   font-family: 'heading';
-  position: relative;
-  width: 1080px;
-  height: 360px;
+  font-size: 2rem;
+  height: 100vh;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-  transform: translateX(-1080px);
-  will-change: transform;
+  align-items: center;
+  justify-content: center;
 }
-
-.digit {
-  position: relative;
-  width: 180px;
-  height: 360px;
-}
-
-.digit h1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: max-content;
-  font-size: 280px;
-  font-weight: lighter;
-  line-height: 1;
-}
-
 .revealer {
   position: absolute;
   top: 50%;
@@ -176,7 +150,41 @@ img{
   background: var(--base);
   border-radius: 1rem;
   transform: scale(0);
+  cursor: pointer;
   z-index: 99999;
+}
+
+.menu-panel {
+  position: fixed;
+  top: 5.5rem;
+  right: 2rem;
+  background: var(--base);
+  padding: 0.5rem;
+  border-radius: 1.5rem;
+  z-index: 99998;
+  transform: translateX(calc(100% + 2rem));
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.35s ease, opacity 0.2s ease;
+}
+
+.menu-panel.is-open {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-item {
+  display: block;
+  padding: 0.6rem 0.9rem;
+  color: var(--text);
+  text-decoration: none;
+  border-radius: 1rem;
+}
+
+.menu-item:hover {
+  background: var(--white);
+  color: var(--text);
 }
 
 .logo{
@@ -184,7 +192,7 @@ img{
 	top:2rem;
 	left:2rem;
 	height: 3rem;
-	width: fixed;
+	width: fit-content;
 	z-index: 99999;
 	transform: scale(0);
 }

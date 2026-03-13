@@ -1,0 +1,184 @@
+.comparison-section {
+  position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 4rem;
+      perspective: 1000px; /* Needed for 3D text flips */
+      background: var(--text);
+    }
+
+    /* Text Content */
+    .text-content {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .text-content h2 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--white), var(--base));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.1;
+      transform-style: preserve-3d;
+      font-family: 'heading';
+    }
+
+    .text-content p {
+      font-size: 1.125rem;
+      color: #a0a0a0;
+      line-height: 1.6;
+      font-family: 'base';
+    }
+
+    /* Flow Container Layout */
+    .flow-container {
+      flex: 1.5;
+      display: flex;
+      gap: 2rem;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .flow-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem;
+      border-radius: 2rem;
+      background: #111;
+      border: 1px solid #222;
+      /* Smooth out GSAP transformations */
+      will-change: transform, opacity, filter; 
+    }
+
+    .flow-column h3 {
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      font-family: 'heading';
+    }
+
+    /* Steps & Arrows Base */
+    .step {
+      padding: 1rem;
+      text-align: center;
+      border-radius: 1rem;
+      font-weight: 500;
+      font-size: 0.95rem;
+      /* Removed CSS opacity/transform so GSAP fromTo controls it entirely */
+    }
+
+    .arrow {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    /* Old Way Styling (Red/Muted) */
+    .old-way {
+      border-color: rgba(255, 60, 60, 0.1);
+    }
+    .old-way h3 { color: #888; }
+    .old-way .step {
+      background: #1a1515;
+      color: #888;
+      border: 1px solid #332222;
+    }
+    .old-way .arrow { color: #444; }
+    .old-way .step.error {
+      background: #3a1515;
+      color: #ff5555;
+      border-color: #ff5555;
+    }
+
+    /* New Way Styling (Bright/Gradient) */
+    .new-way {
+      background: var(--text);
+      border-color: var(--base);
+      box-shadow: 0 0 20px rgba(74, 0, 224, 0.05);
+    }
+    .new-way h3 {
+      background: linear-gradient(90deg, var(--white), var(--base));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .new-way .step {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--base);
+      color: #fff;
+    }
+    .new-way .step.magic {
+      background: linear-gradient(90deg, var(--base), var(--white));
+      color: var(--text);
+      border: none;
+      font-weight: 700;
+    }
+    .new-way .step.success {
+      border: 1px solid var(--base);
+      color: var(--white);
+    }
+    .new-way .arrow {
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: bold;
+      color: var(--white);
+    }
+
+    /* VS Badge */
+    .vs-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #222;
+      color: var(--base);
+      padding: 0.75rem 1.25rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 900;
+      border: 2px solid var(--base);
+      z-index: 2;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Responsive */
+    /* Responsive Styling */
+    @media (max-width: 900px) {
+      .comparison-section {
+        flex-direction: column;
+        padding: 4rem 3rem;
+        gap: 2rem;
+        min-height: auto; /* Let it grow naturally on mobile */
+      }
+      .text-content {
+        max-width: 100%;
+        text-align: center;
+      }
+      .text-content h2 {
+        font-size: 2.5rem; /* Smaller font for mobile */
+      }
+      .flow-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 3rem; /* Extra space between old and new way */
+      }
+      .vs-badge { 
+        /* Move the badge between the stacked columns */
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        align-self: center;
+        margin: -1.5rem 0;
+      }
+      .step {
+        padding: 0.75rem; /* Tighter padding */
+      }
+    }
