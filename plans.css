@@ -61,7 +61,10 @@
       /* --- PRODUCT GRIDS --- */
       .pricing-grid {
         display: flex;
-        gap: 8em;
+        gap: 5em;
+        width: 100%;
+        justify-content: center;
+        padding: 3rem 0;
       }
 
       .module-box {
