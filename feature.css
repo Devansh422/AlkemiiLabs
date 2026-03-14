@@ -1,0 +1,116 @@
+.ai-features-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .features-header h2 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--white) 0%, var(--base) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+      font-family: 'heading', sans-serif;
+    }
+
+    .features-header p {
+      color: var(--white);
+      font-size: 1.2rem;
+    }
+
+    /* Grid Layout */
+    .features-grid {
+      display: grid;
+      /* 2. CRITICAL FIX: min(100%, 320px) prevents overflow on tiny screens */
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 2rem;
+      perspective: 1000px; 
+    }
+
+    /* 3D Tilt Card Base */
+    .tilt-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(30, 30, 30, 0.4) 0%, rgba(15, 15, 15, 0.8) 100%);
+      border: 2px solid rgba(199, 235, 6, 0.2);
+      border-radius: 2rem;
+      padding: 2.5rem;
+      transform-style: preserve-3d;
+      will-change: transform;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .tilt-card:hover {
+      border-color: rgba(199, 235, 6, 0.8);
+      box-shadow: 0 20px 40px rgba(199, 235, 6, 0.15);
+    }
+
+    /* Card Content - Flat by default, smooth transition */
+    .card-content {
+      transform: translateZ(0px); 
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+      pointer-events: none; 
+    }
+
+    /* Only pop out the content on hover, and only on devices with a mouse */
+    @media (hover: hover) and (pointer: fine) {
+      .tilt-card:hover .card-content {
+        transform: translateZ(40px);
+      }
+    }
+
+    /* Premium Icon Wrapper */
+    .icon-wrapper {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(199, 235, 6, 1) 0%, var(--white) 100%);
+      border: 1px solid rgba(142, 45, 226, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--text); 
+      box-shadow: 0 0 20px rgba(142, 45, 226, 0.2) inset;
+    }
+
+    .tilt-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #f0f0f0;
+      font-weight: 600;
+      background: linear-gradient(90deg, #fff, #b8b8b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tilt-card p {
+      font-size: 1rem;
+      color: #999;
+      line-height: 1.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .features-header h2 { 
+        font-size: 2.25rem; /* Slightly smaller for mobile */
+      }
+      .features-grid { 
+        gap: 1.5rem; 
+      }
+      .ai-features-section {
+        /* 3. CRITICAL FIX: Don't use 0 padding, give it 1rem so it doesn't touch edges */
+        padding: 3rem 2rem; 
+      }
+      .tilt-card {
+        /* 4. CRITICAL FIX: Reduce inner padding on mobile so text fits better */
+        padding: 1.5rem; 
+      }
+    }
